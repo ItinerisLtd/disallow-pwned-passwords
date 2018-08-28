@@ -9,6 +9,12 @@
 
 `correct horse battery staple`
 
+```php
+add_action( 'wp_print_scripts', function () {
+        wp_dequeue_script( 'wc-password-strength-meter' );
+}, 10000);
+```
+
 ### Testing
 
 ```bash
