@@ -74,4 +74,14 @@ class Password
             5
         );
     }
+
+    /**
+     * Cleartext getter.
+     *
+     * @return string
+     */
+    public function getCleartext(): string
+    {
+        return $this->cleartext;
+    }
 }

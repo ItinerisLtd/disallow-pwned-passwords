@@ -31,4 +31,13 @@ class PasswordTest extends Unit
 
         $this->assertSame('6622A23D08DAFACC8A11115A3CFC148E51D', $actual);
     }
+
+    public function testGetCleartext()
+    {
+        $password = new Password('password&');
+
+        $actual = $password->getCleartext();
+
+        $this->assertSame('password&', $actual);
+    }
 }
