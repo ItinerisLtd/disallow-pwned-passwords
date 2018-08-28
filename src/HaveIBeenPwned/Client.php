@@ -23,7 +23,7 @@ class Client implements ClientInterface
             return null;
         }
 
-        return $pwned[$password->getSuffix()] ?? 0;
+        return $pwned[$password->getHashSuffix()] ?? 0;
     }
 
     /**

@@ -23,11 +23,11 @@ class PasswordTest extends Unit
         $this->assertSame('486B5', $actual);
     }
 
-    public function testGetSuffix()
+    public function testGetHashSuffix()
     {
         $password = new Password('password&');
 
-        $actual = $password->getSuffix();
+        $actual = $password->getHashSuffix();
 
         $this->assertSame('6622A23D08DAFACC8A11115A3CFC148E51D', $actual);
     }

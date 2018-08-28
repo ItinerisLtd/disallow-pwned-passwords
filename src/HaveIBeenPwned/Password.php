@@ -67,7 +67,7 @@ class Password
      *
      * @return string
      */
-    public function getSuffix(): string
+    public function getHashSuffix(): string
     {
         return substr(
             $this->getHash(),

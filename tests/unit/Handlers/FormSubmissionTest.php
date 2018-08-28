@@ -67,7 +67,7 @@ class FormSubmissionTest extends \Codeception\Test\Unit
         $client->expects('getPwnedTimes')
                ->with(Mockery::on(function (Password $password) {
                    return $password->getHashPrefix() === '486B5' &&
-                          $password->getSuffix() === '6622A23D08DAFACC8A11115A3CFC148E51D';
+                          $password->getHashSuffix() === '6622A23D08DAFACC8A11115A3CFC148E51D';
                }))
                ->andReturn(9999)
                ->once();
@@ -139,7 +139,7 @@ class FormSubmissionTest extends \Codeception\Test\Unit
         $client->expects('getPwnedTimes')
                ->with(Mockery::on(function (Password $password) {
                    return $password->getHashPrefix() === '486B5' &&
-                          $password->getSuffix() === '6622A23D08DAFACC8A11115A3CFC148E51D';
+                          $password->getHashSuffix() === '6622A23D08DAFACC8A11115A3CFC148E51D';
                }))
                ->andReturn(0)
                ->once();
@@ -176,7 +176,7 @@ class FormSubmissionTest extends \Codeception\Test\Unit
         $client->expects('getPwnedTimes')
                ->with(Mockery::on(function (Password $password) {
                    return $password->getHashPrefix() === '486B5' &&
-                          $password->getSuffix() === '6622A23D08DAFACC8A11115A3CFC148E51D';
+                          $password->getHashSuffix() === '6622A23D08DAFACC8A11115A3CFC148E51D';
                }))
                ->andReturnNull()
                ->once();
