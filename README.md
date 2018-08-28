@@ -15,6 +15,7 @@
 - [Minimum Requirements](#minimum-requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Performance](#performance)
 - [FAQ](#faq)
   - [Did you just send all the passwords to someone else?](#did-you-just-send-all-the-passwords-to-someone-else)
   - [How do you compare user passwords with the 5,371,313,595 pwned ones?](#how-do-you-compare-user-passwords-with-the-5371313595-pwned-ones)
@@ -24,6 +25,9 @@
   - [Can strong passwords been pwned?](#can-strong-passwords-been-pwned)
   - [How to disable WooCommerce password strength meter?](#how-to-disable-woocommerce-password-strength-meter)
   - [Will you add support for older PHP versions?](#will-you-add-support-for-older-php-versions)
+  - [It looks awesome. Where can I find some more goodies like this?](#it-looks-awesome-where-can-i-find-some-more-goodies-like-this)
+  - [This plugin isn't on wp.org. Where can I give a ⭐️⭐️⭐️⭐️⭐️ review?](#this-plugin-isnt-on-wporg-where-can-i-give-a-%EF%B8%8F%EF%B8%8F%EF%B8%8F%EF%B8%8F%EF%B8%8F-review)
+- [Alternatives](#alternatives)
 - [Testing](#testing)
 - [Feedback](#feedback)
 - [Change Log](#change-log)
@@ -94,6 +98,27 @@ Additional interceptions if WooCommerce is installed:
 - [`WC_Form_Handler::process_registration`](https://github.com/woocommerce/woocommerce/blob/master/includes/class-wc-form-handler.php) on Home » My account
 - [`WC_Checkout::validate_checkout`](https://github.com/woocommerce/woocommerce/blob/master/includes/class-wc-checkout.php) on Home » Checkout
 
+## Performance
+
+By default, this plugin caches Have I Been Pwned API responses for 1 week using [WP Object Cache](https://codex.wordpress.org/Class_Reference/WP_Object_Cache).
+
+If you don't have a [persistent cache plugin](https://codex.wordpress.org/Class_Reference/WP_Object_Cache#Persistent_Caching), it has no effect and doesn't cache anything.
+
+In rare cases, persistent cache plugins might not be compatible, you can disable by:
+
+```php
+<?php
+
+use Itineris\DisallowPwnedPasswords\HaveIBeenPwned\ClientInterface;
+use Itineris\DisallowPwnedPasswords\HaveIBeenPwned\Client;
+use League\Container\Container;
+
+
+add_action('i_dpp_register', function (Container $container): void {
+    $container->add(ClientInterface::class, Client::class);
+});
+```
+
 ## FAQ
 
 ### Did you just send all the passwords to someone else?
@@ -111,11 +136,12 @@ Paranoia users should check the [plugin implementation](./src).
 
 ### What to do if I don't trust haveibeenpwned.com?
 
-[Troy Hunt](https://www.troyhunt.com) is a well-kown security expert. You should trust him more than me (the plugin author). 
+[Troy Hunt](https://www.troyhunt.com) is a well-kown security expert. You should trust him more than me (the plugin author).
 Anyways, you can replace the default API client with yours:
 
 ```php
 <?php
+
 use Itineris\DisallowPwnedPasswords\HaveIBeenPwned\ClientInterface;
 use League\Container\Container;
 
@@ -123,7 +149,7 @@ class YourCustomClient implements ClientInterface
 {
     // Your implementation.
 }
-   
+
 add_action('i_dpp_register', function (Container $container): void {
     $container->add(ClientInterface::class, YourCustomClient::class);
 });
@@ -157,7 +183,7 @@ Strongly recommended:
 * [WP Cloudflare Guard](https://wordpress.org/plugins/wp-cloudflare-guard/) - Connecting WordPress with Cloudflare firewall, protect your WordPress site at DNS level. Automatically create firewall rules to block dangerous IPs
 * [wp-password-bcrypt](https://github.com/roots/wp-password-bcrypt)
 
-### Can strong passwords been pwned? 
+### Can strong passwords been pwned?
 
 Yes. Example:
 
@@ -178,6 +204,31 @@ add_action( 'wp_print_scripts', function () {
 Never! This plugin will only works on [actively supported PHP versions](https://secure.php.net/supported-versions.php).
 
 Don't use it on **end of life** or **security fixes only** PHP versions.
+
+### It looks awesome. Where can I find some more goodies like this?
+
+- Articles on [Itineris' blog](https://www.itineris.co.uk/blog/)
+- More projects on [Itineris' GitHub profile](https://github.com/itinerisltd)
+- Follow [@itineris_ltd](https://twitter.com/itineris_ltd) and [@TangRufus](https://twitter.com/tangrufus) on Twitter
+- Hire [Itineris](https://www.itineris.co.uk/services/) to build your next awesome site
+
+### This plugin isn't on wp.org. Where can I give a ⭐️⭐️⭐️⭐️⭐️ review?
+
+Thanks! Glad you like it. It's important to make my boss know somebody is using this project. Instead of giving reviews on wp.org, consider:
+
+- tweet something good with mentioning [@itineris_ltd](https://twitter.com/itineris_ltd)
+- star this Github repo
+- watch this Github repo
+- write blog posts
+- submit pull requests
+- [hire Itineris](https://www.itineris.co.uk/services/)
+
+## Alternatives
+
+- [wp-haveibeenpwned](https://github.com/coenjacobs/wp-haveibeenpwned)
+- [Passwords Evolved](https://github.com/carlalexander/passwords-evolved)
+- [Forbid Pwned Passwords](https://github.com/heyitsmikeyv/forbid-pwned-passwords)
+- [Pwned Password Checker](https://github.com/BenjaminNelan/PwnedPasswordChecker)
 
 ## Testing
 
