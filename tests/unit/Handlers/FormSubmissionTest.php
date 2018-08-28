@@ -168,23 +168,7 @@ class FormSubmissionTest extends \Codeception\Test\Unit
         $this->testHandleNotPwned();
     }
 
-    protected function _before()
-    {
-        WP_Mock::userFunction('Itineris\DisallowPwnedPasswords\Handlers\wp_unslash')
-               ->with(Mockery::type('string'))
-               ->andReturnUsing(function ($arg) {
-                   return $arg;
-               })
-               ->zeroOrMoreTimes();
-    }
-
-    protected function _after()
-    {
-        unset($_POST['pass1']);
-        unset($_POST['password_1']);
-    }
-
-    protected function testHandleUnreachable()
+    public function testHandleUnreachable()
     {
         $_POST['pass1'] = 'password&';
 
@@ -212,5 +196,21 @@ class FormSubmissionTest extends \Codeception\Test\Unit
               ->never();
 
         $formSubmission->handle($error);
+    }
+
+    protected function _before()
+    {
+        WP_Mock::userFunction('Itineris\DisallowPwnedPasswords\Handlers\wp_unslash')
+               ->with(Mockery::type('string'))
+               ->andReturnUsing(function ($arg) {
+                   return $arg;
+               })
+               ->zeroOrMoreTimes();
+    }
+
+    protected function _after()
+    {
+        unset($_POST['pass1']);
+        unset($_POST['password_1']);
     }
 }
