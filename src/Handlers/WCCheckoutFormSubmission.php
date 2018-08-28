@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Itineris\DisallowPwnedPasswords\Handlers;
 
-use Itineris\DisallowPwnedPasswords\HaveIBeenPwned\Password;
 use WP_Error;
 
 class WCCheckoutFormSubmission extends AbstractFormSubmission
@@ -26,15 +25,6 @@ class WCCheckoutFormSubmission extends AbstractFormSubmission
             return;
         }
 
-        $password = new Password($cleartext);
-
-        $pwnedTimes = $this->client->getPwnedTimes($password);
-
-        if ($this->predicate->shouldDisallow($pwnedTimes)) {
-            $error->add(
-                static::ERROR_CODE,
-                $this->translator->pwned($pwnedTimes)
-            );
-        }
+        $this->check($cleartext, $error);
     }
 }
