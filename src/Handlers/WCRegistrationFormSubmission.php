@@ -34,6 +34,8 @@ class WCRegistrationFormSubmission
      * TODO: Test me.
      *
      * @param WP_Error $error The WP_Error object.
+     * @param string   $_username Unused.
+     * @param string   $password  The user submitted password. Empty if going to be auto-generated.
      *
      * @return WP_Error
      */
