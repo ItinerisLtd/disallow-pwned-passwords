@@ -1,0 +1,81 @@
+{
+    "name": "itinerisltd/disallow-pwned-passwords",
+    "type": "wordpress-plugin",
+    "description": "TODO",
+    "keywords": [
+        "authentication",
+        "have-i-been-pwned",
+        "hibp",
+        "password",
+        "security",
+        "wordpress",
+        "wp"
+    ],
+    "homepage": "https://itinerisltd.github.io/disallow-pwned-passwords/",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Itineris Limited",
+            "email": "hello@itineris.co.uk",
+            "homepage": "https://itineris.co.uk/",
+            "role": "Company"
+        },
+        {
+            "name": "Tang Rufus",
+            "email": "tangrufus@gmail.com",
+            "homepage": "https://typist.tech/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "league/container": "^3.2",
+        "typisttech/wp-contained-hook": "^0.3.0"
+    },
+    "require-dev": {
+        "10up/wp_mock": "^0.3.0",
+        "automattic/vipwpcs": "dev-master",
+        "codeception/base": "^2.4",
+        "mockery/mockery": "^1.1",
+        "roave/security-advisories": "dev-master",
+        "wp-coding-standards/wpcs": "^1.0"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Itineris\\DisallowPwnedPasswords\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Itineris\\DisallowPwnedPasswords\\Test\\": "tests/unit/"
+        }
+    },
+    "prefer-stable": true,
+    "scripts": {
+        "check-style": "phpcs --standard=ruleset.xml --colors -p -s",
+        "pretag": [
+            "composer update",
+            "@test",
+            "@check-style",
+            "composer normalize",
+            "github_changelog_generator --no-verbose"
+        ],
+        "test": "codecept run"
+    },
+    "support": {
+        "email": "hello@itineris.co.uk",
+        "issues": "https://github.com/ItinerisLtd/disallow-pwned-passwords/issues",
+        "source": "https://github.com/ItinerisLtd/disallow-pwned-passwords"
+    }
+}
