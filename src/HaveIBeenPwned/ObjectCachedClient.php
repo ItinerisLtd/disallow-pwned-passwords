@@ -43,7 +43,7 @@ class ObjectCachedClient implements ClientInterface
             return null;
         }
 
-        return $pwned[$password->getSuffix()] ?? 0;
+        return $pwned[$password->getHashSuffix()] ?? 0;
     }
 
     /**
@@ -64,7 +64,7 @@ class ObjectCachedClient implements ClientInterface
     protected function fetchAndDecode(Password $password): ?array
     {
         $result = wp_cache_get(
-            $password->getPrefix(),
+            $password->getHashPrefix(),
             static::CACHE_GROUP
         );
 
@@ -75,7 +75,7 @@ class ObjectCachedClient implements ClientInterface
         $result = $this->client->fetchAndDecode($password);
         if (null !== $result) {
             wp_cache_set(
-                $password->getPrefix(),
+                $password->getHashPrefix(),
                 $result,
                 static::CACHE_GROUP,
                 static::CACHE_TTL_IN_SECONDS

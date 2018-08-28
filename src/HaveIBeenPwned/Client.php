@@ -23,7 +23,7 @@ class Client implements ClientInterface
             return null;
         }
 
-        return $pwned[$password->getSuffix()] ?? 0;
+        return $pwned[$password->getHashSuffix()] ?? 0;
     }
 
     /**
@@ -58,7 +58,7 @@ class Client implements ClientInterface
      */
     protected function fetch(Password $password): ?string
     {
-        $url = static::ENDPOINT . $password->getPrefix();
+        $url = static::ENDPOINT . $password->getHashPrefix();
         $response = wp_remote_get($url);
 
         $responseCode = wp_remote_retrieve_response_code($response);

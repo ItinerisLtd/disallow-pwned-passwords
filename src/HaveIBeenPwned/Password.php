@@ -35,7 +35,7 @@ class Password
      *
      * @return string
      */
-    public function getPrefix(): string
+    public function getHashPrefix(): string
     {
         return substr(
             $this->getHash(),
@@ -67,11 +67,21 @@ class Password
      *
      * @return string
      */
-    public function getSuffix(): string
+    public function getHashSuffix(): string
     {
         return substr(
             $this->getHash(),
             5
         );
+    }
+
+    /**
+     * Cleartext getter.
+     *
+     * @return string
+     */
+    public function getCleartext(): string
+    {
+        return $this->cleartext;
     }
 }
