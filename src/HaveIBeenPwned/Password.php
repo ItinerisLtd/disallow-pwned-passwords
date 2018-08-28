@@ -35,7 +35,7 @@ class Password
      *
      * @return string
      */
-    public function getPrefix(): string
+    public function getHashPrefix(): string
     {
         return substr(
             $this->getHash(),

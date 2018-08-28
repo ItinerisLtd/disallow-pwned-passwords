@@ -14,11 +14,11 @@ class PasswordTest extends Unit
      */
     protected $tester;
 
-    public function testGetPrefix()
+    public function testGetHashPrefix()
     {
         $password = new Password('password&');
 
-        $actual = $password->getPrefix();
+        $actual = $password->getHashPrefix();
 
         $this->assertSame('486B5', $actual);
     }
