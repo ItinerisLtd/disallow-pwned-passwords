@@ -49,7 +49,7 @@ Although reusing passwords is solely users' fault but when evil attackers brute 
 >
 > -- [NIST Digital Identity Guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
-This plugin's solely purpose is to **disallow WordPress and WooCommerce users reusing passwords listed in [have I been pwned](https://haveibeenpwned.com/) database**.
+This plugin's solely purpose is to **disallow WordPress and WooCommerce users reusing passwords listed in [Have I Been Pwned](https://haveibeenpwned.com/) database**.
 
 ## Explain It Like I'm Five
 
@@ -181,6 +181,7 @@ Strongly recommended:
 
 * [WP Password Argon Two](https://github.com/TypistTech/wp-password-argon-two) - Securely store WordPress user passwords in database with Argon2i hashing and SHA-512 HMAC using PHP's native functions
 * [WP Cloudflare Guard](https://wordpress.org/plugins/wp-cloudflare-guard/) - Connecting WordPress with Cloudflare firewall, protect your WordPress site at DNS level. Automatically create firewall rules to block dangerous IPs
+* [Two-Factor](https://wordpress.org/plugins/two-factor/)
 * [wp-password-bcrypt](https://github.com/roots/wp-password-bcrypt)
 
 ### Can strong passwords been pwned?
@@ -242,7 +243,7 @@ Pull requests without tests will not be accepted!
 ## Feedback
 
 **Please provide feedback!** We want to make this library useful in as many projects as possible.
-Please submit an [issue](https://github.com/ItinerisLtd/disallow-pwned-password/issues/new) and point out what you do and don't like, or fork the project and make suggestions.
+Please submit an [issue](https://github.com/ItinerisLtd/disallow-pwned-passwords/issues/new) and point out what you do and don't like, or fork the project and make suggestions.
 **No issue is too small.**
 
 ## Change Log
@@ -257,11 +258,11 @@ If you discover any security related issues, please email hello@itineris.co.uk i
 
 [Disallow Pwned Password](https://github.com/ItinerisLtd/disallow-pwned-passwords) is a [Itineris Limited](https://www.itineris.co.uk/) project created by [Tang Rufus](https://typist.tech).
 
-Full list of contributors can be found [here](https://github.com/ItinerisLtd/disallow-pwned-password/graphs/contributors).
+Full list of contributors can be found [here](https://github.com/ItinerisLtd/disallow-pwned-passwords/graphs/contributors).
 
 Special thanks to [Troy Hunt](https://www.troyhunt.com/) whose [Have I been pwned database](https://haveibeenpwned.com/) makes this plugin possible. Also, the k-Anonymity validation is an awesome work of [Junade Ali](https://twitter.com/icyapril) from [Cloudflare](https://www.cloudflare.com/).
 
 ## License
 
-[Disallow Pwned Password](https://github.com/ItinerisLtd/disallow-pwned-password) is licensed under the GPLv2 (or later) from the [Free Software Foundation](http://www.fsf.org/).
+[Disallow Pwned Password](https://github.com/ItinerisLtd/disallow-pwned-passwords) is licensed under the GPLv2 (or later) from the [Free Software Foundation](http://www.fsf.org/).
 Please see [License File](LICENSE) for more information.
