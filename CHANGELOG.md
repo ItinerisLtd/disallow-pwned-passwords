@@ -1,10 +1,24 @@
 # Change Log
 
-## [0.2.0](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.0) (2018-08-29)
+## [0.2.1.rc.1](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.1.rc.1) (2019-02-18)
+[Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.2.0...0.2.1.rc.1)
+
+**Closed issues:**
+
+-  Use new packagist.org auto-update mechanism [\#4](https://github.com/ItinerisLtd/disallow-pwned-passwords/issues/4)
+
+**Merged pull requests:**
+
+- Prepare for wp.org release [\#11](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/11) ([TangRufus](https://github.com/TangRufus))
+- Add CI [\#10](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/10) ([TangRufus](https://github.com/TangRufus))
+- Update readme [\#8](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/8) ([TangRufus](https://github.com/TangRufus))
+
+## [0.2.0](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.0) (2018-08-28)
 [Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.1.0...0.2.0)
 
 **Merged pull requests:**
 
+- Version bump 0.2.0 [\#7](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/7) ([TangRufus](https://github.com/TangRufus))
 - Update readme [\#6](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/6) ([TangRufus](https://github.com/TangRufus))
 - Refactor `Password` [\#5](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/5) ([TangRufus](https://github.com/TangRufus))
 - Refactor: DRY `Handlers` [\#3](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/3) ([TangRufus](https://github.com/TangRufus))
