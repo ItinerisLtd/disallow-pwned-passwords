@@ -32,7 +32,7 @@ orbs:
           - run: ghr -t << parameters.github_token >> -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -soft ${CIRCLE_TAG} << parameters.artifact_dir >>
 
 workflows:
-  test_build_release:
+  test:
     jobs:
       - composer/install:
           name: test-latest
@@ -68,6 +68,8 @@ workflows:
             - composer/exec:
                 command: style:check
 
+  build_release:
+    jobs:
       - composer/install:
           name: build
           # Build with lowest support PHP version
@@ -81,15 +83,13 @@ workflows:
                 root: ~/project
                 paths:
                   - release/*.zip
+          filters:
+            tags:
+              only: /.*/
 
       - itinerisltd/publishing-to-github-releases:
           name: publishing-to-github-releases
           requires:
-            - test-latest
-            - test-7.3
-            - test-7.2
-            - test-7.1
-            - style-check
             - build
           artifact_dir: release
           pre-steps:
