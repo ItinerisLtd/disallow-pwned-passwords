@@ -90,10 +90,13 @@ class Client implements ClientInterface
         $pwned = [];
         foreach ($suffixesWithPwnedTimes as $suffixWithPwnedTimes) {
             [
+                // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
                 0 => $suffix,
+                // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
                 1 => $pwnedTimes,
             ] = explode(':', trim($suffixWithPwnedTimes));
 
+            // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
             $pwned[(string) $suffix] = (int) $pwnedTimes;
         }
 

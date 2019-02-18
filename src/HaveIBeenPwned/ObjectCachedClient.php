@@ -74,6 +74,7 @@ class ObjectCachedClient implements ClientInterface
 
         $result = $this->client->fetchAndDecode($password);
         if (null !== $result) {
+            // phpcs:ignore WordPressVIPMinimum.Cache.LowExpiryCacheTime.LowCacheTime -- Because of phpcs bug.
             wp_cache_set(
                 $password->getHashPrefix(),
                 $result,

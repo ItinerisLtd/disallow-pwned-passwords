@@ -34,10 +34,10 @@ class FormSubmission extends AbstractFormSubmission
      */
     protected function getPasswordCleartextFromSuperglobals(): ?string
     {
-        if (empty($_POST['pass1']) && empty($_POST['password_1'])) { // WPCS: CSRF ok.
+        if (empty($_POST['pass1']) && empty($_POST['password_1'])) { // WPCS: input var, CSRF ok.
             return null;
         }
 
-        return wp_unslash($_POST['pass1'] ?? $_POST['password_1']); // WPCS: CSRF ok.
+        return wp_unslash($_POST['pass1'] ?? $_POST['password_1']); // WPCS: input var, CSRF ok.
     }
 }
