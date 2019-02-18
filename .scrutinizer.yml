@@ -1,0 +1,36 @@
+build:
+  nodes:
+    analysis:
+      environment:
+        php: 7.1
+      project_setup:
+        override:
+          - true
+      dependencies:
+        override:
+          - composer install --ignore-platform-reqs --no-interaction --no-dev
+          - mkdir wp
+          - composer require --ignore-platform-reqs --no-interaction --working-dir=wp roots/wordpress
+      tests:
+        override:
+          - php-scrutinizer-run --enable-security-analysis
+
+filter:
+  excluded_paths:
+    - 'tests/*'
+  dependency_paths:
+    - 'wp/*'
+    - 'vendor/*'
+
+checks:
+  php: true
+
+build_failure_conditions:
+    # No new classes/methods with a rating of B or worse allowed
+    - 'elements.rating(<= B).new.exists'
+    # New issues of major or higher severity
+    - 'issues.severity(>= MAJOR).new.exists'
+    # Code Quality Rating drops below 9
+    - 'project.metric("scrutinizer.quality", < 9)'
+    # Code Quality Rating decreased from previous inspection by more than 10%
+    - 'project.metric_change("scrutinizer.quality", < -0.10)'
