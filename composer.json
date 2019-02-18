@@ -80,7 +80,8 @@
             "@test",
             "@check-style",
             "composer normalize",
-            "github_changelog_generator --no-verbose"
+            "github_changelog_generator --no-verbose",
+            "npx doctoc README.md"
         ],
         "release:build": [
             "rm -fr vendor",
