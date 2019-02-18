@@ -7,6 +7,6 @@
 # Export white-listed production code only.
 /src            -export-ignore
 /*.php          -export-ignore
-/composer.json  -export-ignore
+/composer.*     -export-ignore
 /LICENSE        -export-ignore
 /README.md      -export-ignore

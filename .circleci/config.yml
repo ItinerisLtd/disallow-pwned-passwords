@@ -3,19 +3,100 @@ version: 2.1
 orbs:
   composer: itinerisltd/composer@0
 
-workflows:
-  style-check:
+  itinerisltd:
+    executors:
+      default:
+        parameters:
+          image:
+            type: string
+            default: 'cibuilds/github:latest'
+        docker:
+          - image: << parameters.image >>
+
     jobs:
+      publishing-to-github-releases:
+        parameters:
+          github_token:
+            type: string
+            description: GitHub personal access token. For a private repository you need `repo` scope and for a public repository you need `public_repo` scope
+            default: ${GITHUB_TOKEN}
+          artifact_dir:
+            type: string
+            description: directory path of the artifacts to be uploaded
+            default: .
+          executor:
+            type: executor
+            default: default
+        executor: << parameters.executor >>
+        steps:
+          - run: ghr -t << parameters.github_token >> -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -soft ${CIRCLE_TAG} << parameters.artifact_dir >>
+
+workflows:
+  test_build_release:
+    jobs:
+      - composer/install:
+          name: test-latest
+          executor: composer/latest
+          post-steps:
+            - composer/exec:
+                command: test
+
+      - composer/install:
+          name: test-7.3
+          executor: composer/seven_three
+          post-steps:
+            - composer/exec:
+                command: test
+
+      - composer/install:
+          name: test-7.2
+          executor: composer/seven_two
+          post-steps:
+            - composer/exec:
+                command: test
+
+      - composer/install:
+          name: test-7.1
+          executor: composer/seven_one
+          post-steps:
+            - composer/exec:
+                command: test
+
       - composer/install:
           name: style-check
           post-steps:
             - composer/exec:
                 command: style:check
 
-  test:
-    jobs:
       - composer/install:
-          name: test
+          name: build
+          # Build with lowest support PHP version
+          executor: composer/seven_one
           post-steps:
             - composer/exec:
-                command: test
+                command: release:build
+            - store_artifacts:
+                path: release
+            - persist_to_workspace:
+                root: ~/project
+                paths:
+                  - release/*.zip
+
+      - itinerisltd/publishing-to-github-releases:
+          name: publishing-to-github-releases
+          requires:
+            - test-latest
+            - test-7.3
+            - test-7.2
+            - test-7.1
+            - style-check
+            - build
+          artifact_dir: release
+          pre-steps:
+            - attach_workspace:
+                at: ~/project
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
