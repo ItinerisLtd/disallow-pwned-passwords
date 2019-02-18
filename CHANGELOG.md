@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.2.1.rc.2](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.1.rc.2) (2019-02-18)
+[Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.2.1.rc.1...0.2.1.rc.2)
+
+**Merged pull requests:**
+
+- CircleCI: Fix release job not triggered on tag [\#13](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/13) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.2.1.rc.1](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.1.rc.1) (2019-02-18)
 [Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.2.0...0.2.1.rc.1)
 
@@ -9,6 +16,7 @@
 
 **Merged pull requests:**
 
+- Version bump 0.2.1.rc.1 [\#12](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/12) ([TangRufus](https://github.com/TangRufus))
 - Prepare for wp.org release [\#11](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/11) ([TangRufus](https://github.com/TangRufus))
 - Add CI [\#10](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/10) ([TangRufus](https://github.com/TangRufus))
 - Update readme [\#8](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/8) ([TangRufus](https://github.com/TangRufus))
