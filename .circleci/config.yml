@@ -1,0 +1,21 @@
+version: 2.1
+
+orbs:
+  composer: itinerisltd/composer@0
+
+workflows:
+  style-check:
+    jobs:
+      - composer/install:
+          name: style-check
+          post-steps:
+            - composer/exec:
+                command: style:check
+
+  test:
+    jobs:
+      - composer/install:
+          name: test
+          post-steps:
+            - composer/exec:
+                command: test

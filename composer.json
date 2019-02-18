@@ -63,7 +63,8 @@
     },
     "prefer-stable": true,
     "scripts": {
-        "check-style": "phpcs --standard=ruleset.xml --colors -p -s",
+        "style:check": "phpcs",
+        "style:fix": "phpcbf",
         "pretag": [
             "composer update",
             "@test",
