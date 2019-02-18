@@ -8,6 +8,7 @@
         "hibp",
         "password",
         "security",
+        "woocommerce",
         "wordpress",
         "wp"
     ],
@@ -47,7 +48,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1.x-dev"
+            "dev-master": "0.2.x-dev"
         }
     },
     "autoload": {
@@ -60,10 +61,20 @@
             "Itineris\\DisallowPwnedPasswords\\Test\\": "tests/unit/"
         }
     },
+    "archive": {
+        "exclude": [
+            "/*",
+            ".*",
+            "!src",
+            "!vendor/**/*.php",
+            "!vendor/*.php",
+            "!*LICENSE*",
+            "!/README.txt",
+            "!/*.php"
+        ]
+    },
     "prefer-stable": true,
     "scripts": {
-        "style:check": "phpcs",
-        "style:fix": "phpcbf",
         "pretag": [
             "composer update",
             "@test",
@@ -71,6 +82,13 @@
             "composer normalize",
             "github_changelog_generator --no-verbose"
         ],
+        "release:build": [
+            "rm -fr vendor",
+            "composer install --no-dev --prefer-dist --optimize-autoloader --no-suggest",
+            "composer archive --format=zip --dir=release --file=disallow-pwned-passwords"
+        ],
+        "style:check": "phpcs",
+        "style:fix": "phpcbf",
         "test": "codecept run"
     },
     "support": {

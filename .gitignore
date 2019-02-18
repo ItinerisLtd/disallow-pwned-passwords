@@ -8,3 +8,6 @@
 
 ### PhpStorm ###
 /.idea/
+
+### composer release:build ###
+/release/
