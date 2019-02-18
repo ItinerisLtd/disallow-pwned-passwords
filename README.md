@@ -25,6 +25,9 @@ WordPress:
 - [Explain It Like I'm Five](#explain-it-like-im-five)
 - [Minimum Requirements](#minimum-requirements)
 - [Installation](#installation)
+  - [Composer (Recommended)](#composer-recommended)
+  - [WP CLI](#wp-cli)
+  - [Classic](#classic)
 - [Usage](#usage)
 - [Performance](#performance)
 - [FAQ](#faq)
@@ -87,9 +90,21 @@ Users aged older than five could learn more from:
 
 ## Installation
 
+### Composer (Recommended)
+
 ```sh-session
 $ composer require itinerisltd/disallow-pwned-passwords
 ```
+
+### WP CLI
+
+```sh-session
+$ wp plugin install disallow-pwned-passwords --activate
+```
+
+### Classic
+
+See: [https://codex.wordpress.org/Managing_Plugins#Installing_Plugins](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins)
 
 ## Usage
 

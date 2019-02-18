@@ -32,20 +32,46 @@ orbs:
           - run: ghr -t << parameters.github_token >> -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -soft ${CIRCLE_TAG} << parameters.artifact_dir >>
 
 workflows:
-  main:
+  test_build_release:
     jobs:
       - composer/install:
-          name: test
+          name: test-latest
+          executor: composer/latest
           post-steps:
             - composer/exec:
                 command: test
+
+      - composer/install:
+          name: test-7.3
+          executor: composer/seven_three
+          post-steps:
+            - composer/exec:
+                command: test
+
+      - composer/install:
+          name: test-7.2
+          executor: composer/seven_two
+          post-steps:
+            - composer/exec:
+                command: test
+
+      - composer/install:
+          name: test-7.1
+          executor: composer/seven_one
+          post-steps:
+            - composer/exec:
+                command: test
+
       - composer/install:
           name: style-check
           post-steps:
             - composer/exec:
                 command: style:check
+
       - composer/install:
           name: build
+          # Build with lowest support PHP version
+          executor: composer/seven_one
           post-steps:
             - composer/exec:
                 command: release:build
@@ -55,16 +81,20 @@ workflows:
                 root: ~/project
                 paths:
                   - release/*.zip
+
       - itinerisltd/publishing-to-github-releases:
           name: publishing-to-github-releases
+          requires:
+            - test-latest
+            - test-7.3
+            - test-7.2
+            - test-7.1
+            - style-check
+            - build
           artifact_dir: release
           pre-steps:
             - attach_workspace:
                 at: ~/project
-          requires:
-            - build
-            - style-check
-            - test
           filters:
             branches:
               ignore: /.*/
