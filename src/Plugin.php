@@ -43,10 +43,12 @@ class Plugin
         $this->setUpLoader();
 
         add_action('plugins_loaded', function (): void {
+            // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
             do_action(static::PREFIX . '_register', $this->container);
         }, PHP_INT_MAX - 1000);
 
         add_action('plugins_loaded', function (): void {
+            // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
             do_action(static::PREFIX . '_boot', $this->container);
         }, PHP_INT_MIN + 1000);
     }

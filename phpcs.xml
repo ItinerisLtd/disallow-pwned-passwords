@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ruleset name="DisallowPenedPasswords">
+    <file>./</file>
+    <exclude-pattern>/tests/*</exclude-pattern>
+    <exclude-pattern>/vendor/*</exclude-pattern>
+
+    <!-- Show colors in console -->
+    <arg value="-colors"/>
+
+    <!-- Show progress and sniff codes in all reports -->
+    <arg value="sp"/>
+
+    <!-- Install custom rulesets -->
+    <config name="installed_paths" value="vendor/wp-coding-standards/wpcs,vendor/automattic/vipwpcs,vendor/itinerisltd/itineris-wp-coding-standards"/>
+
+    <!-- Use Itineris WP Coding Standards -->
+    <rule ref="Itineris"/>
+
+    <config name="minimum_supported_wp_version" value="4.9"/>
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array" value="disallow-pwned-passwords"/>
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.Commenting.FileComment.MissingPackageTag">
+        <exclude-pattern>/disallow-pwned-passwords.php</exclude-pattern>
+    </rule>
+
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>/disallow-pwned-passwords.php</exclude-pattern>
+    </rule>
+</ruleset>

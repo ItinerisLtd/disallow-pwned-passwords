@@ -1,5 +1,7 @@
 # Disallow Pwned Password
 
+[![CircleCI](https://circleci.com/gh/ItinerisLtd/disallow-pwned-passwords.svg?style=svg)](https://circleci.com/gh/ItinerisLtd/disallow-pwned-passwords)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ItinerisLtd/disallow-pwned-passwords/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ItinerisLtd/disallow-pwned-passwords/?branch=master)
 [![Packagist Version](https://img.shields.io/packagist/v/itinerisltd/disallow-pwned-passwords.svg)](https://packagist.org/packages/itinerisltd/disallow-pwned-passwords)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/itinerisltd/disallow-pwned-passwords.svg)](https://packagist.org/packages/itinerisltd/disallow-pwned-passwords)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/itinerisltd/disallow-pwned-passwords.svg)](https://packagist.org/packages/itinerisltd/disallow-pwned-passwords)
