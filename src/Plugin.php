@@ -18,7 +18,7 @@ use TypistTech\WPContainedHook\Loader;
 
 class Plugin
 {
-    public const PREFIX = 'i_dpp';
+    const PREFIX = 'i_dpp';
 
     /**
      * Plugin constructor.
