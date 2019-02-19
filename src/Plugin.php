@@ -37,17 +37,17 @@ class Plugin
      *
      * @return void
      */
-    public function run(): void
+    public function run()
     {
         $this->setUpContainer();
         $this->setUpLoader();
 
-        add_action('plugins_loaded', function (): void {
+        add_action('plugins_loaded', function () {
             // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
             do_action(static::PREFIX . '_register', $this->container);
         }, PHP_INT_MAX - 1000);
 
-        add_action('plugins_loaded', function (): void {
+        add_action('plugins_loaded', function () {
             // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
             do_action(static::PREFIX . '_boot', $this->container);
         }, PHP_INT_MIN + 1000);
@@ -58,7 +58,7 @@ class Plugin
      *
      * @return void
      */
-    protected function setUpContainer(): void
+    protected function setUpContainer()
     {
         // Register the reflection container as a delegate to enable auto wiring.
         $this->container->delegate(
@@ -76,7 +76,7 @@ class Plugin
      *
      * @return void
      */
-    protected function setUpLoader(): void
+    protected function setUpLoader()
     {
         $this->loader->add(
             new Action('user_profile_update_errors', FormSubmission::class, 'handle'),

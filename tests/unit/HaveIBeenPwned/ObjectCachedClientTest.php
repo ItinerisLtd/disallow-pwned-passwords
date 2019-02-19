@@ -95,13 +95,13 @@ class ObjectCachedClientTest extends Unit
         $originalClient = Mockery::mock(Client::class);
         $originalClient->expects('fetchAndDecode')
                        ->with($password)
-                       ->andReturnNull()
+                       ->andReturn([])
                        ->once();
 
         $client = new ObjectCachedClient($originalClient);
 
         $actual = $client->getPwnedTimes($password);
 
-        $this->assertNull($actual);
+        $this->assertSame(-1, $actual);
     }
 }

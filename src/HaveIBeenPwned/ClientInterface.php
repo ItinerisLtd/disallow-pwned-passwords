@@ -10,7 +10,7 @@ interface ClientInterface
      *
      * @param Password $password The password to be checked.
      *
-     * @return int|null Return null if Have I Been Pwned API endpoint is unreachable.
+     * @return int Return -1 if Have I Been Pwned API endpoint is unreachable.
      */
-    public function getPwnedTimes(Password $password): ?int;
+    public function getPwnedTimes(Password $password): int;
 }

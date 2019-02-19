@@ -68,7 +68,7 @@ class ClientTest extends Unit
 
         $actual = $client->getPwnedTimes($password);
 
-        $this->assertNull($actual);
+        $this->assertSame(-1, $actual);
     }
 
     public function testFetchAndDecode()
@@ -120,6 +120,6 @@ class ClientTest extends Unit
 
         $actual = $client->fetchAndDecode($password);
 
-        $this->assertNull($actual);
+        $this->assertEmpty($actual);
     }
 }
