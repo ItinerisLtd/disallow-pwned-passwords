@@ -8,8 +8,8 @@ use Itineris\DisallowPwnedPasswords\Plugin;
 
 class ObjectCachedClient implements ClientInterface
 {
-    protected const CACHE_GROUP = Plugin::PREFIX . '_hibp'; // Some object cache backend needs short keys.
-    protected const CACHE_TTL_IN_SECONDS = 604800; // 1 week.
+    const CACHE_GROUP = Plugin::PREFIX . '_hibp'; // Some object cache backend needs short keys.
+    const CACHE_TTL_IN_SECONDS = 604800; // 1 week.
 
     /**
      * The original API client.

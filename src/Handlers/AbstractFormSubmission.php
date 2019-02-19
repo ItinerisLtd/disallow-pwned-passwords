@@ -13,7 +13,7 @@ use WP_Error;
 
 abstract class AbstractFormSubmission
 {
-    protected const ERROR_CODE = Plugin::PREFIX . '_pwned';
+    const ERROR_CODE = Plugin::PREFIX . '_pwned';
 
     /**
      * The Have I Been Pwned API client.

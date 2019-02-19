@@ -6,7 +6,7 @@ namespace Itineris\DisallowPwnedPasswords\HaveIBeenPwned;
 
 class Client implements ClientInterface
 {
-    protected const ENDPOINT = 'https://api.pwnedpasswords.com/range/';
+    const ENDPOINT = 'https://api.pwnedpasswords.com/range/';
 
     /**
      * Get number of pwned time of a given password.
