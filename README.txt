@@ -92,7 +92,7 @@ Paranoia users should check the [plugin implementation](https://github.com/Itine
 [Troy Hunt](https://www.troyhunt.com) is a well-kown security expert. You should trust him more than me (the plugin author).
 Anyways, you can replace the default API client with yours:
 
-```
+`
 <?php
 
 use Itineris\DisallowPwnedPasswords\HaveIBeenPwned\ClientInterface;
@@ -106,7 +106,7 @@ class YourCustomClient implements ClientInterface
 add_action('i_dpp_register', function (Container $container): void {
     $container->add(ClientInterface::class, YourCustomClient::class);
 });
-```
+`
 
 This plugin uses [league/container](https://packagist.org/packages/league/container). Learn more from [its documents](http://container.thephpleague.com/3.x/).
 
@@ -147,11 +147,11 @@ Yes. Example:
 
 For testing only, use at your own risk!
 
-```
+`
 add_action('wp_print_scripts', function () {
     wp_dequeue_script('wc-password-strength-meter');
 }, 10000);
-```
+`
 
 ### Will you add support for older PHP versions?
 
