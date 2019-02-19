@@ -29,7 +29,7 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
  *
  * @return void
  */
-function run(): void
+function run()
 {
     $plugin = new Plugin();
     $plugin->run();
