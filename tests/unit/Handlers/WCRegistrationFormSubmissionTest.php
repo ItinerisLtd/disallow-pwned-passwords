@@ -159,7 +159,7 @@ class WCRegistrationFormSubmissionTest extends Unit
                    return $password->getHashPrefix() === '486B5' &&
                           $password->getHashSuffix() === '6622A23D08DAFACC8A11115A3CFC148E51D';
                }))
-               ->andReturnNull()
+               ->andReturn(-1)
                ->once();
 
         $formSubmission = new WCRegistrationFormSubmission(

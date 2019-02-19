@@ -4,14 +4,13 @@ orbs:
   composer: itinerisltd/composer@0
 
   itinerisltd:
+    orbs:
+      composer: itinerisltd/composer@0
+
     executors:
       default:
-        parameters:
-          image:
-            type: string
-            default: 'cibuilds/github:latest'
         docker:
-          - image: << parameters.image >>
+          - image: 'cibuilds/github:latest'
 
     jobs:
       publishing-to-github-releases:
@@ -63,17 +62,25 @@ workflows:
                 command: test
 
       - composer/install:
+          name: test-7.0
+          executor: composer/seven_zero
+          post-steps:
+            - composer/exec:
+                command: test
+
+      - composer/install:
           name: style-check
           post-steps:
             - composer/exec:
                 command: style:check
 
-  build_release:
+  # Build with lowest support PHP version
+  # wp.org svn pre-commit hook rejects PHP 7.1+ syntax
+  build_lint_release:
     jobs:
       - composer/install:
           name: build
-          # Build with lowest support PHP version
-          executor: composer/seven_one
+          executor: composer/seven_zero
           post-steps:
             - composer/exec:
                 command: release:build
@@ -87,10 +94,23 @@ workflows:
             tags:
               only: /.*/
 
+      - composer/install:
+          name: lint
+          executor: composer/seven_zero
+          post-steps:
+            - composer/exec:
+                command: release:build
+            - run: unzip release/disallow-pwned-passwords.zip -d /tmp/plugin-source-code
+            - run: find /tmp/plugin-source-code -name "*.php" -print0 | xargs -n 1 -0 php -l
+          filters:
+            tags:
+              only: /.*/
+
       - itinerisltd/publishing-to-github-releases:
           name: publishing-to-github-releases
           requires:
             - build
+            - lint
           artifact_dir: release
           pre-steps:
             - attach_workspace:

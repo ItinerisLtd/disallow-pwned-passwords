@@ -33,14 +33,14 @@ class ObjectCachedClient implements ClientInterface
      *
      * @param Password $password The password to be checked.
      *
-     * @return int|null Return null if Have I Been Pwned API endpoint is unreachable.
+     * @return int Return -1 if Have I Been Pwned API endpoint is unreachable.
      */
-    public function getPwnedTimes(Password $password): ?int
+    public function getPwnedTimes(Password $password): int
     {
         $pwned = $this->fetchAndDecode($password);
 
-        if (null === $pwned) {
-            return null;
+        if (empty($pwned)) {
+            return -1;
         }
 
         return $pwned[$password->getHashSuffix()] ?? 0;
@@ -59,9 +59,9 @@ class ObjectCachedClient implements ClientInterface
      *
      * @param Password $password The password to be checked.
      *
-     * @return array|null
+     * @return array
      */
-    protected function fetchAndDecode(Password $password): ?array
+    protected function fetchAndDecode(Password $password): array
     {
         $result = wp_cache_get(
             $password->getHashPrefix(),
@@ -73,7 +73,7 @@ class ObjectCachedClient implements ClientInterface
         }
 
         $result = $this->client->fetchAndDecode($password);
-        if (null !== $result) {
+        if (! empty($result)) {
             // phpcs:ignore WordPressVIPMinimum.Cache.LowExpiryCacheTime.LowCacheTime -- Because of phpcs bug.
             wp_cache_set(
                 $password->getHashPrefix(),

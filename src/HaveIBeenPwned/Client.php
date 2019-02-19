@@ -13,14 +13,14 @@ class Client implements ClientInterface
      *
      * @param Password $password The password to be checked.
      *
-     * @return int|null Return null if Have I Been Pwned API endpoint is unreachable.
+     * @return int Return -1 if Have I Been Pwned API endpoint is unreachable.
      */
-    public function getPwnedTimes(Password $password): ?int
+    public function getPwnedTimes(Password $password): int
     {
         $pwned = $this->fetchAndDecode($password);
 
-        if (null === $pwned) {
-            return null;
+        if (empty($pwned)) {
+            return -1;
         }
 
         return $pwned[$password->getHashSuffix()] ?? 0;
@@ -37,13 +37,13 @@ class Client implements ClientInterface
      *
      * @param Password $password The password to be checked.
      *
-     * @return array|null
+     * @return array
      */
-    public function fetchAndDecode(Password $password): ?array
+    public function fetchAndDecode(Password $password): array
     {
         $responseBody = $this->fetch($password);
-        if (null === $responseBody) {
-            return null;
+        if (empty($responseBody)) {
+            return [];
         }
 
         return $this->decode($responseBody);
@@ -54,16 +54,16 @@ class Client implements ClientInterface
      *
      * @param Password $password The password to be checked.
      *
-     * @return string|null Body of the response if successful. Otherwise, null.
+     * @return string Body of the response if successful. Otherwise, empty string.
      */
-    protected function fetch(Password $password): ?string
+    protected function fetch(Password $password): string
     {
         $url = static::ENDPOINT . $password->getHashPrefix();
         $response = wp_remote_get($url);
 
         $responseCode = wp_remote_retrieve_response_code($response);
         if (200 !== $responseCode) {
-            return null;
+            return '';
         }
 
         return (string) $response['body'];
@@ -89,15 +89,11 @@ class Client implements ClientInterface
 
         $pwned = [];
         foreach ($suffixesWithPwnedTimes as $suffixWithPwnedTimes) {
-            [
-                // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
-                0 => $suffix,
-                // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
-                1 => $pwnedTimes,
-            ] = explode(':', trim($suffixWithPwnedTimes));
+            $exploded = explode(':', trim($suffixWithPwnedTimes));
+            $suffix = (string) $exploded[0];
+            $pwnedTimes = (int) $exploded[1];
 
-            // phpcs:ignore WordPressVIPMinimum.Variables.VariableAnalysis.UndefinedVariable -- Because of phpcs bug.
-            $pwned[(string) $suffix] = (int) $pwnedTimes;
+            $pwned[$suffix] = $pwnedTimes;
         }
 
         return $pwned;

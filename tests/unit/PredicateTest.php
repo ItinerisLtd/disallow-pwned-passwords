@@ -31,7 +31,7 @@ class PredicateTest extends Unit
         $this->assertTrue($actual);
     }
 
-    public function testShouldDisallowZero()
+    public function testShouldAllowZero()
     {
         $predicate = new Predicate();
 
@@ -40,11 +40,11 @@ class PredicateTest extends Unit
         $this->assertFalse($actual);
     }
 
-    public function testShouldDisallowNull()
+    public function testShouldAllowMinusOne()
     {
         $predicate = new Predicate();
 
-        $actual = $predicate->shouldDisallow(null);
+        $actual = $predicate->shouldDisallow(-1);
 
         $this->assertFalse($actual);
     }

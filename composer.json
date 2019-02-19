@@ -29,12 +29,12 @@
         }
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.0",
         "league/container": "^3.2",
-        "typisttech/wp-contained-hook": "^0.3.0"
+        "typisttech/wp-contained-hook": "dev-seven-zero"
     },
     "require-dev": {
-        "10up/wp_mock": "^0.3.0",
+        "10up/wp_mock": "^0.3.0 || ^0.4.0",
         "codeception/base": "^2.4",
         "itinerisltd/itineris-wp-coding-standards": "^0.2.1",
         "mockery/mockery": "^1.1",
@@ -48,7 +48,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2.x-dev"
+            "dev-master": "0.3.x-dev"
         }
     },
     "autoload": {

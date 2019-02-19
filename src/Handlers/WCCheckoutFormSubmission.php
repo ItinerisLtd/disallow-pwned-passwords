@@ -16,7 +16,7 @@ class WCCheckoutFormSubmission extends AbstractFormSubmission
      *
      * @return void
      */
-    public function handle(array $data, WP_Error $error): void
+    public function handle(array $data, WP_Error $error)
     {
         $errorCode = $error->get_error_code();
         $cleartext = $data['account_password'] ?? '';
