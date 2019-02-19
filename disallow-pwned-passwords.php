@@ -3,7 +3,7 @@
  * Plugin Name:     Disallow Pwned Passwords
  * Plugin URI:      https://github.com/ItinerisLtd/disallow-pwned-passwords
  * Description:     Disallow WordPress and WooCommerce users using pwned passwords.
- * Version:         0.3.1
+ * Version:         0.3.2
  * Author:          Itineris Limited
  * Author URI:      https://itineris.co.uk
  * License:         GPL-2.0-or-later

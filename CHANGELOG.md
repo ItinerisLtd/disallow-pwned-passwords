@@ -1,10 +1,18 @@
 # Change Log
 
+## [0.3.2](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.3.2) (2019-02-19)
+[Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.3.1...0.3.2)
+
+**Merged pull requests:**
+
+- Fix return type hint \(Downgrade to PHP 7.0\) [\#23](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/23) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.3.1](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.3.1) (2019-02-19)
 [Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.3.0...0.3.1)
 
 **Merged pull requests:**
 
+- Version bump 0.3.1 [\#22](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/22) ([TangRufus](https://github.com/TangRufus))
 - Update `README.md` and `README.txt` [\#21](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/21) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.3.0](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.3.0) (2019-02-19)

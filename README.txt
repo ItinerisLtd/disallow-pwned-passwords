@@ -5,7 +5,7 @@ Tags: authentication, have-i-been-pwned, hibp, password, security, woocommerce
 Requires at least: 4.9.8
 Tested up to: 5.0.3
 Requires PHP: 7.0
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
