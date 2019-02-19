@@ -38,6 +38,10 @@ class FormSubmission extends AbstractFormSubmission
             return '';
         }
 
-        return (string) wp_unslash($_POST['pass1'] ?? $_POST['password_1']); // WPCS: input var, CSRF ok.
+        $unslashed = wp_unslash($_POST['pass1'] ?? $_POST['password_1']); // WPCS: input var, CSRF ok.
+
+        return is_string($unslashed)
+            ? $unslashed
+            : '';
     }
 }

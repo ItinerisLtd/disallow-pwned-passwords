@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Itineris\DisallowPwnedPasswords\HaveIBeenPwned;
 
+use WP_Error;
+
 class Client implements ClientInterface
 {
     const ENDPOINT = 'https://api.pwnedpasswords.com/range/';
@@ -60,6 +62,9 @@ class Client implements ClientInterface
     {
         $url = static::ENDPOINT . $password->getHashPrefix();
         $response = wp_remote_get($url);
+        if ($response instanceof WP_Error) {
+            return '';
+        }
 
         $responseCode = wp_remote_retrieve_response_code($response);
         if (200 !== $responseCode) {
@@ -90,7 +95,7 @@ class Client implements ClientInterface
         $pwned = [];
         foreach ($suffixesWithPwnedTimes as $suffixWithPwnedTimes) {
             $exploded = explode(':', trim($suffixWithPwnedTimes));
-            $suffix = (string) $exploded[0];
+            $suffix = $exploded[0];
             $pwnedTimes = (int) $exploded[1];
 
             $pwned[$suffix] = $pwnedTimes;

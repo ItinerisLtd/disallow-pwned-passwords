@@ -2,15 +2,15 @@ build:
   nodes:
     analysis:
       environment:
-        php: 7.1
+        php: 7
       project_setup:
         override:
           - true
       dependencies:
         override:
-          - composer install --ignore-platform-reqs --no-interaction --no-dev
-          - mkdir wp
-          - composer require --ignore-platform-reqs --no-interaction --working-dir=wp roots/wordpress
+          - php --version
+          - composer --version
+          - composer install --no-interaction
       tests:
         override:
           - php-scrutinizer-run --enable-security-analysis
@@ -19,7 +19,7 @@ filter:
   excluded_paths:
     - 'tests/*'
   dependency_paths:
-    - 'wp/*'
+    - 'wordpress/*'
     - 'vendor/*'
 
 checks:

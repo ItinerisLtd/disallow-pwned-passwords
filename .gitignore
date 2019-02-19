@@ -11,3 +11,6 @@
 
 ### composer release:build ###
 /release/
+
+### PHPStan ###
+/wordpress/

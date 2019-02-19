@@ -13,6 +13,28 @@ orbs:
           - image: 'cibuilds/github:latest'
 
     jobs:
+      seven-zero:
+        parameters:
+          executor:
+            type: executor
+            default: composer/seven_zero
+        executor: << parameters.executor >>
+        steps:
+          - run: php --version
+          - run: sudo composer selfupdate
+          - run: composer --version
+      lint-wp-org:
+        parameters:
+          zip:
+            type: string
+            description: path to plugin zip file
+          executor:
+            type: executor
+            default: composer/seven_zero
+        executor: << parameters.executor >>
+        steps:
+          - run: unzip << parameters.zip >> -d /tmp/plugin-source-code
+          - run: find /tmp/plugin-source-code -name "*.php" -print0 | xargs -n 1 -0 php -l
       publishing-to-github-releases:
         parameters:
           github_token:
@@ -61,10 +83,12 @@ workflows:
             - composer/exec:
                 command: test
 
-      - composer/install:
+      - itinerisltd/seven-zero:
           name: test-7.0
-          executor: composer/seven_zero
           post-steps:
+            - checkout
+            - composer/exec:
+                command: remove --dev phpstan/*
             - composer/exec:
                 command: test
 
@@ -74,14 +98,24 @@ workflows:
             - composer/exec:
                 command: style:check
 
+      - composer/install:
+          name: phpstan-analyse
+          post-steps:
+            - composer/exec:
+                command: phpstan:analyse
+
   # Build with lowest support PHP version
   # wp.org svn pre-commit hook rejects PHP 7.1+ syntax
   build_lint_release:
+    # TODO: Extract orbs
+    # TODO: Commit wo.org svn
     jobs:
-      - composer/install:
+      - itinerisltd/seven-zero:
           name: build
-          executor: composer/seven_zero
           post-steps:
+            - checkout
+            - composer/exec:
+                command: remove --dev phpstan/*
             - composer/exec:
                 command: release:build
             - store_artifacts:
@@ -94,14 +128,14 @@ workflows:
             tags:
               only: /.*/
 
-      - composer/install:
-          name: lint
-          executor: composer/seven_zero
-          post-steps:
-            - composer/exec:
-                command: release:build
-            - run: unzip release/disallow-pwned-passwords.zip -d /tmp/plugin-source-code
-            - run: find /tmp/plugin-source-code -name "*.php" -print0 | xargs -n 1 -0 php -l
+      - itinerisltd/lint-wp-org:
+          name: lint-wp-org
+          requires:
+            - build
+          zip: release/disallow-pwned-passwords.zip
+          pre-steps:
+            - attach_workspace:
+                at: ~/project
           filters:
             tags:
               only: /.*/
@@ -110,7 +144,7 @@ workflows:
           name: publishing-to-github-releases
           requires:
             - build
-            - lint
+            - lint-wp-org
           artifact_dir: release
           pre-steps:
             - attach_workspace:

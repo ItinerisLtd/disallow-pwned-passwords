@@ -22,7 +22,7 @@ class WCRegistrationFormSubmission extends AbstractFormSubmission
         $errorCode = $error->get_error_code();
         $cleartext = wp_unslash($cleartext);
 
-        if (! empty($errorCode) || empty($cleartext)) {
+        if (! empty($errorCode) || empty($cleartext) || ! is_string($cleartext)) {
             return $error;
         }
 
