@@ -1,10 +1,18 @@
 # Change Log
 
+## [0.2.2](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.2) (2019-02-19)
+[Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.2.1...0.2.2)
+
+**Merged pull requests:**
+
+- Remove class constants modifiers [\#17](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/17) ([TangRufus](https://github.com/TangRufus))
+
 ## [0.2.1](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.1) (2019-02-19)
 [Full Changelog](https://github.com/ItinerisLtd/disallow-pwned-passwords/compare/0.2.1.rc.2...0.2.1)
 
 **Merged pull requests:**
 
+- Version bump 0.2.1 [\#16](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/16) ([TangRufus](https://github.com/TangRufus))
 - Assets: Add screenshots [\#15](https://github.com/ItinerisLtd/disallow-pwned-passwords/pull/15) ([TangRufus](https://github.com/TangRufus))
 
 ## [0.2.1.rc.2](https://github.com/ItinerisLtd/disallow-pwned-passwords/tree/0.2.1.rc.2) (2019-02-18)

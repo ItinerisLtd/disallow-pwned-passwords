@@ -78,7 +78,7 @@
         "pretag": [
             "composer update",
             "@test",
-            "@check-style",
+            "@style:check",
             "composer normalize",
             "github_changelog_generator --no-verbose",
             "npx doctoc README.md"
