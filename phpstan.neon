@@ -1,0 +1,21 @@
+parameters:
+    level: max
+    paths:
+        - %rootDir%/../../../src
+    autoload_directories:
+        - %rootDir%/../../../wordpress
+
+    autoload_files:
+        - %rootDir%/../../../wordpress/wp-includes/cache.php
+        - %rootDir%/../../../wordpress/wp-includes/formatting.php
+        - %rootDir%/../../../wordpress/wp-includes/http.php
+        - %rootDir%/../../../wordpress/wp-includes/kses.php
+        - %rootDir%/../../../wordpress/wp-includes/l10n.php
+        - %rootDir%/../../../wordpress/wp-includes/plugin.php
+        - %rootDir%/../../../vendor/codeception/base/autoload.php
+
+    ignoreErrors:
+        - '#Construct empty\(\) is not allowed. Use more strict comparison.#'
+
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon

@@ -21,6 +21,20 @@ class Plugin
     const PREFIX = 'i_dpp';
 
     /**
+     * The container instance
+     *
+     * @var Container
+     */
+    protected $container;
+
+    /**
+     * The loader instance
+     *
+     * @var Loader
+     */
+    protected $loader;
+
+    /**
      * Plugin constructor.
      */
     public function __construct()

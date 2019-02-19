@@ -38,7 +38,10 @@
         "codeception/base": "^2.4",
         "itinerisltd/itineris-wp-coding-standards": "^0.2.1",
         "mockery/mockery": "^1.1",
-        "roave/security-advisories": "dev-master"
+        "phpstan/phpstan": "^0.11.2",
+        "phpstan/phpstan-strict-rules": "^0.11.0",
+        "roave/security-advisories": "dev-master",
+        "roots/wordpress": "^5.0"
     },
     "config": {
         "preferred-install": {
@@ -63,21 +66,23 @@
     },
     "archive": {
         "exclude": [
+            "/.*",
             "/*",
-            ".*",
-            "!src",
-            "!vendor/**/*.php",
-            "!vendor/*.php",
             "!*LICENSE*",
+            "!/*.php",
             "!/README.txt",
-            "!/*.php"
+            "!src",
+            "!vendor/*.php",
+            "!vendor/**/*.php"
         ]
     },
     "prefer-stable": true,
     "scripts": {
+        "phpstan:analyse": "phpstan analyse",
         "pretag": [
             "composer update",
             "@test",
+            "@phpstan:analyse",
             "@style:check",
             "composer normalize",
             "github_changelog_generator --no-verbose",
@@ -86,6 +91,7 @@
         "release:build": [
             "rm -fr vendor",
             "composer install --no-dev --prefer-dist --optimize-autoloader --no-suggest",
+            "rm -fr release wordpress",
             "composer archive --format=zip --dir=release --file=disallow-pwned-passwords"
         ],
         "style:check": "phpcs",

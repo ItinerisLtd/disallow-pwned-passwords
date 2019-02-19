@@ -266,7 +266,8 @@ Thanks! Glad you like it. It's important to let my boss knows somebody is using 
 
 ```sh-session
 $ composer test
-$ composer check-style
+$ composer phpstan:analyse
+$ composer style:check
 ```
 
 Pull requests without tests will not be accepted!
