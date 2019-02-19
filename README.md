@@ -32,7 +32,7 @@ WordPress:
 - [Performance](#performance)
 - [FAQ](#faq)
   - [Did you just send all the passwords to someone else?](#did-you-just-send-all-the-passwords-to-someone-else)
-  - [How do you compare user passwords with the 5,371,313,595 pwned ones?](#how-do-you-compare-user-passwords-with-the-5371313595-pwned-ones)
+  - [How do you compare user passwords with the 6,493,641,194 pwned ones?](#how-do-you-compare-user-passwords-with-the-6493641194-pwned-ones)
   - [What to do if I don't trust haveibeenpwned.com?](#what-to-do-if-i-dont-trust-haveibeenpwnedcom)
   - [What to do if I don't trust the plugin author?](#what-to-do-if-i-dont-trust-the-plugin-author)
   - [I have installed this plugin. Does it mean my WordPress site is *unhackable*?](#i-have-installed-this-plugin-does-it-mean-my-wordpress-site-is-unhackable)
@@ -40,7 +40,7 @@ WordPress:
   - [How to disable WooCommerce password strength meter?](#how-to-disable-woocommerce-password-strength-meter)
   - [Will you add support for older PHP versions?](#will-you-add-support-for-older-php-versions)
   - [It looks awesome. Where can I find some more goodies like this?](#it-looks-awesome-where-can-i-find-some-more-goodies-like-this)
-  - [This plugin isn't on wp.org. Where can I give a ⭐️⭐️⭐️⭐️⭐️ review?](#this-plugin-isnt-on-wporg-where-can-i-give-a-%EF%B8%8F%EF%B8%8F%EF%B8%8F%EF%B8%8F%EF%B8%8F-review)
+  - [Besides wp.org, where can I give a :star::star::star::star::star: review?](#besides-wporg-where-can-i-give-a-starstarstarstarstar-review)
 - [Alternatives](#alternatives)
 - [Testing](#testing)
 - [Feedback](#feedback)
@@ -67,7 +67,7 @@ This plugin's solely purpose is to **disallow WordPress and WooCommerce users re
 
 ## Explain It Like I'm Five
 
-- [Troy Hunt](https://www.troyhunt.com), a well-kown security expert, collected 5,371,313,595 (and counting) pwned passwords from previous security breaches
+- [Troy Hunt](https://www.troyhunt.com), a well-kown security expert, collected 6,493,641,194 (and counting) pwned passwords from previous security breaches
 - Pwned passwords stored as SHA-1 hashes on haveibeenpwned.com
 - Whenever WordPress / WooCommerce users attempt to change their passwords, this plugin hashes the user password
 - Take the first 5 characters from the hash
@@ -84,7 +84,7 @@ Users aged older than five could learn more from:
 
 ## Minimum Requirements
 
-- PHP v7.1
+- PHP v7.0
 - WordPress v4.9.8
 - **(Optional)** WooCommerce v3.4.4
 
@@ -152,7 +152,7 @@ add_action('i_dpp_register', function (Container $container): void {
 
 No. **User passwords never leave your server, not even in hashed form**.
 
-### How do you compare user passwords with the 5,371,313,595 pwned ones?
+### How do you compare user passwords with the 6,493,641,194 pwned ones?
 
 Curious users can learn more from:
 
@@ -233,22 +233,26 @@ Never! This plugin will only works on [actively supported PHP versions](https://
 
 Don't use it on **end of life** or **security fixes only** PHP versions.
 
+Note: Current version supports PHP 7.0 because wordpress.org svn pre-commit hook rejects PHP 7.1+ syntax. However, you should not use PHP 7.0 because [it has reached **end of life** since 10 January 2019](https://secure.php.net/eol.php).
+
 ### It looks awesome. Where can I find some more goodies like this?
 
 - Articles on [Itineris' blog](https://www.itineris.co.uk/blog/)
 - More projects on [Itineris' GitHub profile](https://github.com/itinerisltd)
+- More plugins on [Itineris](https://profiles.wordpress.org/itinerisltd/#content-plugins) and [TangRufus](https://profiles.wordpress.org/tangrufus/#content-plugins) wp.org profiles
 - Follow [@itineris_ltd](https://twitter.com/itineris_ltd) and [@TangRufus](https://twitter.com/tangrufus) on Twitter
 - Hire [Itineris](https://www.itineris.co.uk/services/) to build your next awesome site
 
-### This plugin isn't on wp.org. Where can I give a ⭐️⭐️⭐️⭐️⭐️ review?
+### Besides wp.org, where can I give a :star::star::star::star::star: review?
 
-Thanks! Glad you like it. It's important to make my boss know somebody is using this project. Instead of giving reviews on wp.org, consider:
+Thanks! Glad you like it. It's important to let my boss knows somebody is using this project. Please consider:
 
-- tweet something good with mentioning [@itineris_ltd](https://twitter.com/itineris_ltd)
-- star this Github repo
-- watch this Github repo
+- give :star::star::star::star::star: reviews on [wp.org](https://wordpress.org/support/plugin/disallow-pwned-passwords/reviews/#new-post)
+- tweet something good with mentioning [@itineris_ltd](https://twitter.com/itineris_ltd) and [@TangRufus](https://twitter.com/tangrufus)
+- ️️:star: star this [Github repo](https://github.com/ItinerisLtd/disallow-pwned-passwords)
+- watch this [Github repo](https://github.com/ItinerisLtd/disallow-pwned-passwords)
 - write blog posts
-- submit pull requests
+- submit [pull requests](https://github.com/ItinerisLtd/disallow-pwned-passwords)
 - [hire Itineris](https://www.itineris.co.uk/services/)
 
 ## Alternatives

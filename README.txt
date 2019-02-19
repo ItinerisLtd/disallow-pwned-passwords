@@ -4,8 +4,8 @@ Contributors: itinerisltd, tangrufus
 Tags: authentication, have-i-been-pwned, hibp, password, security, woocommerce
 Requires at least: 4.9.8
 Tested up to: 5.0.3
-Requires PHP: 7.1
-Stable tag: trunk
+Requires PHP: 7.0
+Stable tag: 0.3.0
 License: GPL-2.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -47,7 +47,7 @@ Additional interceptions if WooCommerce is installed:
 
 ## Explain It Like I'm Five
 
-- [Troy Hunt](https://www.troyhunt.com), a well-kown security expert, collected 5,371,313,595 (and counting) pwned passwords from previous security breaches
+- [Troy Hunt](https://www.troyhunt.com), a well-kown security expert, collected 6,493,641,194 (and counting) pwned passwords from previous security breaches
 - Pwned passwords stored as SHA-1 hashes on haveibeenpwned.com
 - Whenever WordPress / WooCommerce users attempt to change their passwords, this plugin hashes the user password
 - Take the first 5 characters from the hash
@@ -70,7 +70,7 @@ Fork the plugin on [GitHub](https://github.com/ItinerisLtd/disallow-pwned-passwo
 
 ### What are the minimum requirements?
 
-- PHP v7.1
+- PHP v7.0
 - WordPress v4.9.8
 - **(Optional)** WooCommerce v3.4.4
 
@@ -78,7 +78,7 @@ Fork the plugin on [GitHub](https://github.com/ItinerisLtd/disallow-pwned-passwo
 
 No. **User passwords never leave your server, not even in hashed form**.
 
-### How do you compare user passwords with the 5,371,313,595 pwned ones?
+### How do you compare user passwords with the 6,493,641,194 pwned ones?
 
 Curious users can learn more from:
 
@@ -92,7 +92,7 @@ Paranoia users should check the [plugin implementation](https://github.com/Itine
 [Troy Hunt](https://www.troyhunt.com) is a well-kown security expert. You should trust him more than me (the plugin author).
 Anyways, you can replace the default API client with yours:
 
-```php
+```
 <?php
 
 use Itineris\DisallowPwnedPasswords\HaveIBeenPwned\ClientInterface;
@@ -147,7 +147,7 @@ Yes. Example:
 
 For testing only, use at your own risk!
 
-```php
+```
 add_action('wp_print_scripts', function () {
     wp_dequeue_script('wc-password-strength-meter');
 }, 10000);
@@ -159,12 +159,27 @@ Never! This plugin will only works on [actively supported PHP versions](https://
 
 Don't use it on **end of life** or **security fixes only** PHP versions.
 
+Note: Current version supports PHP 7.0 because wordpress.org svn pre-commit hook rejects PHP 7.1+ syntax. However, you should not use PHP 7.0 because [it has reached **end of life** since 10 January 2019](https://secure.php.net/eol.php).
+
 ### It looks awesome. Where can I find some more goodies like this?
 
 - Articles on [Itineris' blog](https://www.itineris.co.uk/blog/)
 - More projects on [Itineris' GitHub profile](https://github.com/itinerisltd)
+- More plugins on [Itineris](https://profiles.wordpress.org/itinerisltd/#content-plugins) and [TangRufus](https://profiles.wordpress.org/tangrufus/#content-plugins) wp.org profiles
 - Follow [@itineris_ltd](https://twitter.com/itineris_ltd) and [@TangRufus](https://twitter.com/tangrufus) on Twitter
 - Hire [Itineris](https://www.itineris.co.uk/services/) to build your next awesome site
+
+### Besides wp.org, where can I give a ★★★★★ review?
+
+Thanks! Glad you like it. It's important to let my boss knows somebody is using this project. Please consider:
+
+- give ★★★★★ reviews on [wp.org](https://wordpress.org/support/plugin/disallow-pwned-passwords/reviews/#new-post)
+- tweet something good with mentioning [@itineris_ltd](https://twitter.com/itineris_ltd) and [@TangRufus](https://twitter.com/tangrufus)
+- ️️★ star this [Github repo](https://github.com/ItinerisLtd/disallow-pwned-passwords)
+- watch this [Github repo](https://github.com/ItinerisLtd/disallow-pwned-passwords)
+- write blog posts
+- submit pull requests
+- [hire Itineris](https://www.itineris.co.uk/services/)
 
 ### Where to report security related issues?
 
