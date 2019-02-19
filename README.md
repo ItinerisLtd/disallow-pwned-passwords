@@ -104,7 +104,8 @@ $ wp plugin install disallow-pwned-passwords --activate
 
 ### Classic
 
-See: [https://codex.wordpress.org/Managing_Plugins#Installing_Plugins](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins)
+Download the plugin zip file from https://wordpress.org/plugins/disallow-pwned-passwords/
+Then, follow [https://codex.wordpress.org/Managing_Plugins#Installing_Plugins](https://codex.wordpress.org/Managing_Plugins#Installing_Plugins)
 
 ## Usage
 
