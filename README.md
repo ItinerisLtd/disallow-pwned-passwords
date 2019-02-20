@@ -11,11 +11,11 @@ Packagist:
 [![Packagist Downloads](https://img.shields.io/packagist/dt/itinerisltd/disallow-pwned-passwords.svg)](https://packagist.org/packages/itinerisltd/disallow-pwned-passwords)
 
 WordPress:
-![Wordpress Plugin Version](https://img.shields.io/wordpress/plugin/v/disallow-pwned-passwords.svg?style=flat)
-![Wordpress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/disallow-pwned-passwords.svg?style=flat)
-![Wordpress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/disallow-pwned-passwords.svg?style=flat)
-![Wordpress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/disallow-pwned-passwords.svg?style=flat)
-![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/disallow-pwned-passwords.svg?style=flat)
+[![Wordpress Plugin Version](https://img.shields.io/wordpress/plugin/v/disallow-pwned-passwords.svg?style=flat)](https://wordpress.org/plugins/disallow-pwned-passwords/)
+[![Wordpress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/disallow-pwned-passwords.svg?style=flat)](https://wordpress.org/plugins/disallow-pwned-passwords/)
+[![Wordpress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/disallow-pwned-passwords.svg?style=flat)](https://wordpress.org/plugins/disallow-pwned-passwords/)
+[![Wordpress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/disallow-pwned-passwords.svg?style=flat)](https://wordpress.org/support/plugin/disallow-pwned-passwords/reviews/#new-post)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/disallow-pwned-passwords.svg?style=flat)](https://wordpress.org/plugins/disallow-pwned-passwords/advanced/)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
